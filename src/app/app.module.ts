@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserFormComponent } from './UserForm/UserForm.component';
 
 import { ViewsModule } from './views/views.module';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -14,8 +14,8 @@ import { ViewsModule } from './views/views.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ViewsModule,
-  ],
+    ViewsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
