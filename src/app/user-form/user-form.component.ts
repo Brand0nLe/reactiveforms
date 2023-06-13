@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-user-form',
@@ -8,20 +8,19 @@ import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from
 })
 
 export class UserFormComponent implements OnInit {
+  
+  userForm!: FormGroup;
+  
+  constructor(private formBuilder: FormBuilder) { }
 
 
 
+get nickNames(){
+  return this.userForm.get('nickNames') as FormArray;
+}
 
-submitForm() {
-    if(this.userForm.invalid) {
-      alert('Fix errors on form');
-    } else {
-      alert('Succesful!');
-       console.log(this.userForm.value);
-      this.userForm.reset();
-    }}
-
-
+  
+  
   setValue() {
     this.userForm.setValue({
       fName: 'Cassandra',
@@ -30,29 +29,52 @@ submitForm() {
       hasMiddleName: true
     });
   }
-
+  
   patchValue() {
     this.userForm.patchValue({
       fName: 'Casey'
     });
   }
-
-
-  	
- noJoseph(c: AbstractControl): {[key: string]: boolean} | null {
-  if (c.value && c.value === 'Joseph') {
-    return { 'itsJoseph': true};
+  
+  submitForm() {
+    if (this.userForm.invalid) {
+      alert('Fix errors on form');
+    } else {
+      alert('Succesful!');
+      console.log(this.userForm.value);
+      this.userForm.reset();
+    }
   }
-  return null;
-}
+  
+  
+  noJoseph(c: AbstractControl): { [key: string]: boolean } | null {
+    if (c.value && c.value === 'Joseph') {
+      return { 'itsJoseph': true };
+    }
+    return null;
+  }
+  
+  
+  passwordMatch(c: AbstractControl): { [key: string]: boolean } | null {
+    console.log('password function here');
+    const password = c.get('password');
+    const confirmPassword = c.get('confirmPassword');
+    if (password?.value && confirmPassword?.value && password.value !== confirmPassword.value) {
+      return { 'mismatch': true };
+    }
+    return null;
+  }
+
+  addNickName(){
+    this.nickNames.push(this.formBuilder.control(''));
+  }
+
+  
 
 
 
 
 
-  userForm!: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     // this.userForm = new FormGroup({
@@ -68,7 +90,14 @@ submitForm() {
       fName: ['', [Validators.required, Validators.minLength(2), this.noJoseph]],
       lName: ['', [Validators.required, Validators.minLength(2)]],
       mName: ['', Validators.required],
-      hasMiddleName: false
+      passwordGroup: this.formBuilder.group({
+        password: null,
+        confirmPassword: null
+      }, {validator: this.passwordMatch}),
+      hasMiddleName: false,
+      nickNames: this.formBuilder.array([
+        this.formBuilder.control('')
+      ])
     });
 
 
@@ -85,17 +114,7 @@ submitForm() {
 
 
 
-    
-
-
-	
-
-
-  
-
-}}
-
-function noJoseph(c: any, AbstractControl: any) {
-  throw new Error('Function not implemented.');
+  }
 }
+
 
