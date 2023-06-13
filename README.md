@@ -17,7 +17,7 @@ To run this project, follow these steps:
 
 ## Contact
 
-If you have any questions or would like to know more about the project, feel free to reach out to me.
+If you have any questions or would like to know more about myself, feel free to reach out to me.
 
 - Email: [brandonctle.dev@gmail.com](mailto:brandonctle.dev@gmail.com)
 - LinkedIn: [https://www.linkedin.com/in/brandonctle](https://www.linkedin.com/in/brandonctle/)
