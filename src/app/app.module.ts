@@ -16,6 +16,9 @@ import { UserFormComponent } from './user-form/user-form.component';
     AppRoutingModule,
     ViewsModule
     ],
+    exports: [
+      UserFormComponent
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
