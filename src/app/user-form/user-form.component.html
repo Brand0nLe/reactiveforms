@@ -1,7 +1,7 @@
 <div class="container">
     <fieldset>
       <legend> User Form</legend>
-      <form [formGroup]="userForm">
+      <form [formGroup]="userForm" (ngSubmit)="submitForm()">
 
           <div class="form-group">
               <label for="fName">First Name</label>
@@ -20,6 +20,10 @@
                 <label class="form-check-label" for="hasMiddleName">I don't have a middle name</label>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <!-- <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button> -->
+
+            <button type="button" class="btn btn-secondary" (click)="setValue()">Set Value</button>
+            <button type="button" class="btn btn-secondary" (click)="patchValue()">Patch Value</button>
         </form>
     </fieldset>
 
@@ -33,13 +37,18 @@
     <div> Touched: {{userForm.touched}} </div>
     <div> Pristine: {{userForm.pristine}} </div>
     <div> Valid: {{userForm.valid}} </div>
-    <div> First Name Touched: {{userForm.get('fName').touched}} </div>
-    <div> First Name Dirty: {{userForm.get('fName').dirty}} </div>
-    <div> First Name Valid: {{userForm.get('fName').valid}} </div>
+    <div> First Name Touched: {{userForm.get('fName')?.touched}} </div>
+    <div> First Name Dirty: {{userForm.get('fName')?.dirty}} </div>
+    <div> First Name Valid: {{userForm.get('fName')?.valid}} </div>
 
+    
 
 </div>
 
+<div>
+    <small class="text-danger" *ngIf="userForm.get('fName')?.invalid && userForm.get('fName')?.dirty">**Invalid first name</small>
+<small class="text-danger" *ngIf="userForm.get('fName')?.errors?.['itsJoseph'] && userForm.get('fName')?.dirty">**Joseph not allowed here!</small>
+</div>
 
 
   </div>
