@@ -1,6 +1,6 @@
 # Reactive Forms
 
-This is just practice creating reactive forms in Angular.
+This is just for practice creating reactive forms in Angular.
 
 
 ## Reference
