@@ -2,10 +2,11 @@
 
 This is just for practice creating reactive forms in Angular.
 
-
 ## Reference
 
 Followed along with these slides: [Reactive Forms](https://slides.com/caseypamplona/deck-d70374/fullscreen#/reactive-forms)
+
+## Setup
 
 To run this project, follow these steps:
 
