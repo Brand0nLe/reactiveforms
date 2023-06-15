@@ -23,4 +23,4 @@ If you have any questions or would like to know more about myself, feel free to 
 - LinkedIn: [https://www.linkedin.com/in/brandonctle](https://www.linkedin.com/in/brandonctle/)
 - Portfolio: [https://brandonle.azurewebsites.net](https://brandonle.azurewebsites.net/)
 
-Thank you!
+Thank you for visiting!
